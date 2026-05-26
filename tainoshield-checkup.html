@@ -896,8 +896,8 @@ function showResults() {
           ${riskItems}
         </div>
         <p class="result-sub" style="margin-bottom:20px;">A Taino Shield specialist will reach out to help secure your business. As a thank you for completing the checkup, you qualify for <strong style="color:var(--gold)">50% off your cybersecurity assessment.</strong></p>
-        <button class="cta-result" onclick="submitClaim(this, ${totalNo}, ${JSON.stringify(noQuestions)})">Submit to Claim Your 50% Discount</button>
-        <div id="submit-confirm" style="display:none;margin-top:16px;font-size:14px;color:var(--gold);opacity:0.85;">✅ Submitted! We'll be in touch shortly.</div>
+        <button class="cta-result" onclick="submitClaim(this)">Submit to Claim Your 50% Discount</button>
+        <div class="submit-confirm" style="display:none;margin-top:16px;"></div>
         <button class="restart-btn" onclick="restart()">Retake the checkup</button>
       </div>`;
   } else {
@@ -924,7 +924,15 @@ function showResults() {
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function submitClaim(btn, totalNo, noQuestions) {
+function submitClaim(btn) {
+  // Recalculate from global answers
+  const noQuestions = [];
+  categories.forEach(cat => {
+    const noCount = cat.qs.filter(q => answers[q] === false).length;
+    if(noCount > 0) noQuestions.push({ name: cat.name, count: noCount });
+  });
+  const totalNo = Object.values(answers).filter(v => v===false).length;
+
   // Step 1 — immediately show loading state
   btn.disabled = true;
   btn.style.opacity = '0.75';
@@ -933,7 +941,8 @@ function submitClaim(btn, totalNo, noQuestions) {
     + '<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>'
     + '</svg> Submitting…</span>';
 
-  const confirmBox = document.getElementById('submit-confirm');
+  // Use nextElementSibling to reliably find the confirm box next to the button
+  const confirmBox = btn.nextElementSibling;
 
   // Step 2 — submit to Formspree
   submitToFormspree(totalNo, noQuestions, true,
