@@ -89,6 +89,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--blue);color:var(--gold)
   animation:fadeUp 0.4s ease both;
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 .card-title{
   font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;
   color:var(--gold);margin-bottom:6px;
@@ -196,13 +197,16 @@ select option{background:var(--blue-dark);color:var(--gold);}
 /* ── QUIZ SECTION ── */
 .quiz-section{margin-bottom:36px;}
 .quiz-section-title{
-  font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;
+  font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;
   letter-spacing:3px;text-transform:uppercase;
-  color:var(--gold);opacity:0.7;
-  padding:8px 14px;background:rgba(247,186,9,0.08);
-  border-left:3px solid var(--gold);border-radius:0 4px 4px 0;
+  color:var(--blue);
+  padding:10px 18px;
+  background:var(--gold);
+  border-radius:6px;
   margin-bottom:18px;
+  display:flex;align-items:center;gap:10px;
 }
+.quiz-section-title svg{flex-shrink:0;}
 .question{
   padding:18px 0;
   border-bottom:1px solid rgba(255,255,255,0.06);
@@ -488,28 +492,28 @@ input.invalid,select.invalid{border-color:#e74c3c;}
       <div class="quiz-section">
         <div class="quiz-section-title">🔐 Passwords & Access</div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q1.</span>Do all employees use strong, unique passwords for every work account?</div>
+          <div class="q-text"><span class="q-num">1.</span>Do all employees use strong, unique passwords for every work account?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(1,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(1,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q2.</span>Is multi-factor authentication (MFA) enabled on all business accounts (email, banking, software)?</div>
+          <div class="q-text"><span class="q-num">2.</span>Is multi-factor authentication (MFA) enabled on all business accounts (email, banking, software)?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(2,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(2,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q3.</span>Do you have a process to immediately remove access when an employee leaves?</div>
+          <div class="q-text"><span class="q-num">3.</span>Do you have a process to immediately remove access when an employee leaves?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(3,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(3,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q4.</span>Does your business use a password manager?</div>
+          <div class="q-text"><span class="q-num">4.</span>Does your business use a password manager?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(4,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(4,false,this)">NO</button>
@@ -521,28 +525,28 @@ input.invalid,select.invalid{border-color:#e74c3c;}
       <div class="quiz-section">
         <div class="quiz-section-title">💻 Devices & Networks</div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q5.</span>Are all company computers and devices protected with up-to-date antivirus software?</div>
+          <div class="q-text"><span class="q-num">5.</span>Are all company computers and devices protected with up-to-date antivirus software?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(5,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(5,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q6.</span>Do all devices receive automatic security updates and patches?</div>
+          <div class="q-text"><span class="q-num">6.</span>Do all devices receive automatic security updates and patches?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(6,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(6,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q7.</span>Is your business Wi-Fi network password-protected and separate from your guest network?</div>
+          <div class="q-text"><span class="q-num">7.</span>Is your business Wi-Fi network password-protected and separate from your guest network?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(7,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(7,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q8.</span>Do employees working remotely connect through a secure VPN?</div>
+          <div class="q-text"><span class="q-num">8.</span>Do employees working remotely connect through a secure VPN?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(8,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(8,false,this)">NO</button>
@@ -554,28 +558,28 @@ input.invalid,select.invalid{border-color:#e74c3c;}
       <div class="quiz-section">
         <div class="quiz-section-title">💾 Data & Backups</div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q9.</span>Is your business data backed up regularly (at least once a week)?</div>
+          <div class="q-text"><span class="q-num">9.</span>Is your business data backed up regularly (at least once a week)?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(9,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(9,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q10.</span>Are your backups stored in a separate, secure location (not just on the same device)?</div>
+          <div class="q-text"><span class="q-num">10.</span>Are your backups stored in a separate, secure location (not just on the same device)?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(10,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(10,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q11.</span>Have you tested your backups to confirm they can actually be restored?</div>
+          <div class="q-text"><span class="q-num">11.</span>Have you tested your backups to confirm they can actually be restored?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(11,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(11,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q12.</span>Is sensitive customer or financial data encrypted?</div>
+          <div class="q-text"><span class="q-num">12.</span>Is sensitive customer or financial data encrypted?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(12,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(12,false,this)">NO</button>
@@ -587,21 +591,21 @@ input.invalid,select.invalid{border-color:#e74c3c;}
       <div class="quiz-section">
         <div class="quiz-section-title">📧 Email & Phishing</div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q13.</span>Do your employees know how to recognize a phishing email?</div>
+          <div class="q-text"><span class="q-num">13.</span>Do your employees know how to recognize a phishing email?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(13,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(13,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q14.</span>Has your team received cybersecurity awareness training in the last 12 months?</div>
+          <div class="q-text"><span class="q-num">14.</span>Has your team received cybersecurity awareness training in the last 12 months?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(14,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(14,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q15.</span>Do you have email filtering in place to block spam and malicious messages?</div>
+          <div class="q-text"><span class="q-num">15.</span>Do you have email filtering in place to block spam and malicious messages?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(15,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(15,false,this)">NO</button>
@@ -613,28 +617,28 @@ input.invalid,select.invalid{border-color:#e74c3c;}
       <div class="quiz-section">
         <div class="quiz-section-title">📋 Policies & Planning</div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q16.</span>Does your business have a written cybersecurity policy?</div>
+          <div class="q-text"><span class="q-num">16.</span>Does your business have a written cybersecurity policy?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(16,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(16,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q17.</span>Do you have an incident response plan in case of a cyberattack?</div>
+          <div class="q-text"><span class="q-num">17.</span>Do you have an incident response plan in case of a cyberattack?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(17,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(17,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q18.</span>Do you know which vendor or professional to call if you get hacked right now?</div>
+          <div class="q-text"><span class="q-num">18.</span>Do you know which vendor or professional to call if you get hacked right now?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(18,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(18,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q19.</span>Have you reviewed the cybersecurity practices of your third-party vendors and software providers?</div>
+          <div class="q-text"><span class="q-num">19.</span>Have you reviewed the cybersecurity practices of your third-party vendors and software providers?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(19,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(19,false,this)">NO</button>
@@ -646,14 +650,14 @@ input.invalid,select.invalid{border-color:#e74c3c;}
       <div class="quiz-section">
         <div class="quiz-section-title">🛡️ Compliance & Insurance</div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q20.</span>Does your business carry cyber liability insurance?</div>
+          <div class="q-text"><span class="q-num">20.</span>Does your business carry cyber liability insurance?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(20,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(20,false,this)">NO</button>
           </div>
         </div>
         <div class="question">
-          <div class="q-text"><span class="q-num">Q21.</span>Are you aware of the data privacy regulations that apply to your industry?</div>
+          <div class="q-text"><span class="q-num">21.</span>Are you aware of the data privacy regulations that apply to your industry?</div>
           <div class="yn-row">
             <button class="yn-btn yes" onclick="answer(21,true,this)">YES</button>
             <button class="yn-btn no" onclick="answer(21,false,this)">NO</button>
@@ -766,33 +770,75 @@ function updateProgress() {
   document.getElementById('prog-fill').style.width = pct+'%';
 }
 
+const questionTexts = {
+  1:'Do all employees use strong, unique passwords for every work account?',
+  2:'Is multi-factor authentication (MFA) enabled on all business accounts?',
+  3:'Do you have a process to immediately remove access when an employee leaves?',
+  4:'Does your business use a password manager?',
+  5:'Are all company computers and devices protected with up-to-date antivirus software?',
+  6:'Do all devices receive automatic security updates and patches?',
+  7:'Is your business Wi-Fi network password-protected and separate from your guest network?',
+  8:'Do employees working remotely connect through a secure VPN?',
+  9:'Is your business data backed up regularly (at least once a week)?',
+  10:'Are your backups stored in a separate, secure location?',
+  11:'Have you tested your backups to confirm they can actually be restored?',
+  12:'Is sensitive customer or financial data encrypted?',
+  13:'Do your employees know how to recognize a phishing email?',
+  14:'Has your team received cybersecurity awareness training in the last 12 months?',
+  15:'Do you have email filtering in place to block spam and malicious messages?',
+  16:'Does your business have a written cybersecurity policy?',
+  17:'Do you have an incident response plan in case of a cyberattack?',
+  18:'Do you know which vendor or professional to call if you get hacked right now?',
+  19:'Have you reviewed the cybersecurity practices of your third-party vendors?',
+  20:'Does your business carry cyber liability insurance?',
+  21:'Are you aware of the data privacy regulations that apply to your industry?'
+};
+
+const catLabels = {
+  1:'Passwords & Access', 2:'Passwords & Access', 3:'Passwords & Access', 4:'Passwords & Access',
+  5:'Devices & Networks', 6:'Devices & Networks', 7:'Devices & Networks', 8:'Devices & Networks',
+  9:'Data & Backups', 10:'Data & Backups', 11:'Data & Backups', 12:'Data & Backups',
+  13:'Email & Phishing', 14:'Email & Phishing', 15:'Email & Phishing',
+  16:'Policies & Planning', 17:'Policies & Planning', 18:'Policies & Planning', 19:'Policies & Planning',
+  20:'Compliance & Insurance', 21:'Compliance & Insurance'
+};
+
 function buildAnswerSummary() {
-  const catLabels = {
-    1:'Passwords & Access', 2:'Passwords & Access', 3:'Passwords & Access', 4:'Passwords & Access',
-    5:'Devices & Networks', 6:'Devices & Networks', 7:'Devices & Networks', 8:'Devices & Networks',
-    9:'Data & Backups', 10:'Data & Backups', 11:'Data & Backups', 12:'Data & Backups',
-    13:'Email & Phishing', 14:'Email & Phishing', 15:'Email & Phishing',
-    16:'Policies & Planning', 17:'Policies & Planning', 18:'Policies & Planning', 19:'Policies & Planning',
-    20:'Compliance & Insurance', 21:'Compliance & Insurance'
-  };
-  return Object.entries(answers).map(([q,a]) => `Q${q} (${catLabels[q]}): ${a ? 'YES' : 'NO'}`).join(' | ');
+  const noAnswers = [];
+  const yesAnswers = [];
+  Object.entries(answers).forEach(([q,a]) => {
+    const line = `Q${q}. ${questionTexts[q]}`;
+    if(a === false) noAnswers.push(line);
+    else yesAnswers.push(line);
+  });
+
+  let summary = '';
+  if(noAnswers.length > 0) {
+    summary += '--- VULNERABILITIES (NO) ---\n';
+    summary += noAnswers.map((q,i) => `${i+1}. ${q}`).join('\n');
+    summary += '\n\n';
+  }
+  summary += '--- SECURE (YES) ---\n';
+  summary += yesAnswers.map((q,i) => `${i+1}. ${q}`).join('\n');
+  return summary;
 }
 
-function submitToFormspree(totalNo, noQuestions, isRisk) {
+function submitToFormspree(totalNo, noQuestions, isRisk, onSuccess, onError) {
   const name = document.getElementById('f-name').value;
+  const biz = document.getElementById('f-biz').value;
   const email = document.getElementById('f-email').value;
   const result = isRisk
     ? `AT RISK — ${totalNo} vulnerabilities in: ${noQuestions.map(c=>c.name).join(', ')}`
     : 'PASSED — All 21 questions answered Yes';
 
   document.getElementById('fs-subject').value = isRisk
-    ? `⚠️ Cyber Checkup: ${name} from ${document.getElementById('f-biz').value} — ${totalNo} vulnerabilities found`
-    : `✅ Cyber Checkup: ${name} from ${document.getElementById('f-biz').value} — Passed all 21 questions`;
+    ? `⚠️ Cyber Checkup: ${name} from ${biz} — ${totalNo} vulnerabilities found`
+    : `✅ Cyber Checkup: ${name} from ${biz} — Passed all 21 questions`;
   document.getElementById('fs-name').value = name;
   document.getElementById('fs-email').value = email;
   document.getElementById('fs-replyto').value = email;
   document.getElementById('fs-phone').value = document.getElementById('f-phone').value;
-  document.getElementById('fs-biz').value = document.getElementById('f-biz').value;
+  document.getElementById('fs-biz').value = biz;
   document.getElementById('fs-industry').value = document.getElementById('f-industry').value;
   document.getElementById('fs-country').value = document.getElementById('f-country').value;
   document.getElementById('fs-state').value = document.getElementById('f-state').value || 'N/A';
@@ -810,8 +856,9 @@ function submitToFormspree(totalNo, noQuestions, isRisk) {
     body: new FormData(document.getElementById('formspree-form')),
     headers: { 'Accept': 'application/json' }
   }).then(r => {
-    if(!r.ok) console.warn('Formspree submission issue:', r.status);
-  }).catch(e => console.warn('Formspree error:', e));
+    if(r.ok) { if(onSuccess) onSuccess(); }
+    else { if(onError) onError(); }
+  }).catch(e => { if(onError) onError(); });
 }
 
 function showResults() {
@@ -860,7 +907,12 @@ function showResults() {
         <div class="result-title">Excellent — Your Basics Are Solid, ${firstName}</div>
         <p class="result-sub">You passed all 21 questions across all 6 categories. Your business has strong foundational cybersecurity practices in place. That said, threats evolve constantly — a full professional assessment can uncover deeper vulnerabilities a checklist can't catch.</p>
         <p class="result-sub" style="margin-bottom:20px;">Even businesses with strong practices benefit from a professional review. A Taino Shield specialist will be in touch.</p>
-        <div id="submit-confirm" style="margin-top:4px;font-size:14px;color:var(--gold);opacity:0.85;">✅ Your results have been submitted. We'll be in touch shortly.</div>
+        <div id="submit-confirm" style="margin-top:4px;">
+          <div style="background:rgba(39,174,96,0.12);border:1px solid rgba(39,174,96,0.35);border-radius:8px;padding:16px 20px;">
+            <div style="font-family:Montserrat,sans-serif;font-size:15px;font-weight:700;color:#27ae60;margin-bottom:6px;">✅ Successfully submitted!</div>
+            <div style="font-size:13px;color:var(--gold);opacity:0.85;line-height:1.6;">Your results have been sent to our team. A Taino Shield specialist will be in touch shortly.</div>
+          </div>
+        </div>
         <button class="restart-btn" onclick="restart()">Retake the checkup</button>
       </div>`;
   }
@@ -873,14 +925,30 @@ function showResults() {
 }
 
 function submitClaim(btn, totalNo, noQuestions) {
-  btn.textContent = 'Submitting…';
+  btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 0.8s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Submitting…</span>';
   btn.disabled = true;
-  btn.style.opacity = '0.7';
-  submitToFormspree(totalNo, noQuestions, true);
-  setTimeout(() => {
-    btn.style.display = 'none';
-    document.getElementById('submit-confirm').style.display = 'block';
-  }, 800);
+  btn.style.opacity = '0.75';
+  submitToFormspree(totalNo, noQuestions, true,
+    function() {
+      btn.style.display = 'none';
+      const confirm = document.getElementById('submit-confirm');
+      confirm.innerHTML = `<div style="background:rgba(39,174,96,0.12);border:1px solid rgba(39,174,96,0.35);border-radius:8px;padding:16px 20px;margin-top:8px;">
+        <div style="font-family:Montserrat,sans-serif;font-size:15px;font-weight:700;color:#27ae60;margin-bottom:6px;">✅ Successfully submitted!</div>
+        <div style="font-size:13px;color:var(--gold);opacity:0.85;line-height:1.6;">Your results have been sent to our team. A Taino Shield specialist will contact you shortly to discuss your 50% discount and next steps.</div>
+      </div>`;
+      confirm.style.display = 'block';
+    },
+    function() {
+      btn.innerHTML = 'Submit to Claim Your 50% Discount';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      const confirm = document.getElementById('submit-confirm');
+      confirm.innerHTML = `<div style="background:rgba(231,76,60,0.1);border:1px solid rgba(231,76,60,0.3);border-radius:8px;padding:14px 18px;margin-top:8px;">
+        <div style="font-size:13px;color:#e74c3c;line-height:1.6;">⚠️ Submission failed. Please try again or email us directly at <a href="mailto:contact@tainoshield.com" style="color:#e74c3c;">contact@tainoshield.com</a></div>
+      </div>`;
+      confirm.style.display = 'block';
+    }
+  );
 }
 
 function setStep(n) {
