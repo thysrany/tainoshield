@@ -556,11 +556,13 @@ document.querySelectorAll('.fu, .pkg-card, .pillar').forEach(el => io.observe(el
       var focalX = W * 0.28;
       var focalY = H * 0.5;
       var spreadY = (idx / (total-1)) * H * 1.1 - H * 0.05;
+      // Fan spread on the LEFT side — wide apart at x=0, bundling toward focal point
+      var leftSpreadY = focalY + (spreadY - H*0.5) * 0.85;
       var f = {
-        x0:  focalX - W*0.32,
-        y0:  focalY + (spreadY - H*0.5)*0.08,
-        cx1: focalX,
-        cy1: focalY + (spreadY - H*0.5)*0.28,
+        x0:  -60,
+        y0:  leftSpreadY,
+        cx1: focalX * 0.45,
+        cy1: focalY + (spreadY - H*0.5)*0.55,
         cx2: W * 0.70,
         cy2: spreadY * 0.65 + focalY * 0.35,
         x3:  W + 60,
